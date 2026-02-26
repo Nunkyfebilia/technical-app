@@ -9,6 +9,8 @@ apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
  * By default you don't need to apply any configuration, just uncomment the lines you need.
  */
 react {
+    hermesCommand = "$rootDir/../node_modules/hermes-engine/win64-bin/hermesc.exe"
+    // hermesCommand = new File(rootProject.projectDir, "../node_modules/react-native/sdks/hermesc/win64-bin/hermesc.exe").getAbsolutePath()
     /* Folders */
     //   The root of your project, i.e. where "package.json" lives. Default is '../..'
     // root = file("../../")
@@ -107,6 +109,13 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+    splits {
+    abi {
+        reset()
+        enable false
+        universalApk true
+    }
+}
 }
 
 dependencies {
