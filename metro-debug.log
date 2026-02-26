@@ -1,0 +1,52 @@
+
+Welcome to React Native v0.84
+Starting dev server on http://0.0.0.0:8081
+
+
+                        ▒▒▓▓▓▓▒▒
+                     ▒▓▓▓▒▒░░▒▒▓▓▓▒
+                  ▒▓▓▓▓░░░▒▒▒▒░░░▓▓▓▓▒
+                 ▓▓▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▓▓
+                 ▓▓░░░░░▒▓▓▓▓▓▓▒░░░░░▓▓
+                 ▓▓░░▓▓▒░░░▒▒░░░▒▓▒░░▓▓
+                 ▓▓░░▓▓▓▓▓▒▒▒▒▓▓▓▓▒░░▓▓
+                 ▓▓░░▓▓▓▓▓▓▓▓▓▓▓▓▓▒░░▓▓
+                 ▓▓▒░░▒▒▓▓▓▓▓▓▓▓▒░░░▒▓▓
+                  ▒▓▓▓▒░░░▒▓▓▒░░░▒▓▓▓▒
+                     ▒▓▓▓▒░░░░▒▓▓▓▒
+                        ▒▒▓▓▓▓▒▒
+
+
+ WARN  the transform cache was reset.
+                Welcome to Metro v0.83.4
+              Fast - Scalable - Integrated
+
+
+ BUNDLE  ./index.js ░░░░░░░░░░░░░░░░ 0.0% (0/1)
+ BUNDLE  ./index.js ▓▓▓▓▓▓▓▓▓▓░░░░░░ 63.3% (431/556)
+ BUNDLE  ./index.js 
+ ERROR  Error: Unable to resolve module @react-native-async-storage/async-storage from c:\Users\HP\Downloads\project\technicalapp\src\theme\ThemeContext.jsx: @react-native-async-storage/async-storage could not be found within the project or in these directories:
+  node_modules
+  ..\..\..\node_modules
+  1 | import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+  2 | import { useColorScheme } from 'react-native';
+> 3 | import AsyncStorage from '@react-native-async-storage/async-storage';
+    |                           ^
+  4 |
+  5 | const THEME_PREFERENCE_KEY = 'appThemePreference';
+  6 |
+    at ModuleResolver.resolveDependency (c:\Users\HP\Downloads\project\technicalapp\node_modules\metro\src\node-haste\DependencyGraph\ModuleResolution.js:185:15)
+    at DependencyGraph.resolveDependency (c:\Users\HP\Downloads\project\technicalapp\node_modules\metro\src\node-haste\DependencyGraph.js:256:43)
+    at c:\Users\HP\Downloads\project\technicalapp\node_modules\metro\src\lib\transformHelpers.js:169:21
+    at resolveDependencies (c:\Users\HP\Downloads\project\technicalapp\node_modules\metro\src\DeltaBundler\buildSubgraph.js:47:25)
+    at visit (c:\Users\HP\Downloads\project\technicalapp\node_modules\metro\src\DeltaBundler\buildSubgraph.js:85:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Promise.all (index 9)
+    at async visit (c:\Users\HP\Downloads\project\technicalapp\node_modules\metro\src\DeltaBundler\buildSubgraph.js:94:5)
+    at async Promise.all (index 2)
+    at async visit (c:\Users\HP\Downloads\project\technicalapp\node_modules\metro\src\DeltaBundler\buildSubgraph.js:94:5)
+ BUNDLE  ./index.js ░░░░░░░░░░░░░░░░ 0.0% (0/1)
+ BUNDLE  ./index.js 
+ BUNDLE  ./index.js ░░░░░░░░░░░░░░░░ 0.0% (0/1)
+ BUNDLE  ./index.js 
+ INFO  [1m[7m💡 JavaScript logs have moved![22m They can now be viewed in React Native DevTools. Tip: Type [1mj[22m in the terminal to open.[27m
