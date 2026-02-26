@@ -110,9 +110,12 @@ export default function LoginScreen({navigation}) {
     setError('');
 
     try {
-      await GoogleSignin.hasPlayServices();
-      await GoogleSignin.signIn();
-      const {idToken} = await GoogleSignin.getTokens();
+      await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
+      const signInResult = await GoogleSignin.signIn();
+      const idToken =
+        signInResult?.data?.idToken ||
+        signInResult?.idToken ||
+        GoogleSignin.getCurrentUser()?.idToken;
 
       if (!idToken) {
         throw new Error('Google ID token missing');
@@ -125,14 +128,24 @@ export default function LoginScreen({navigation}) {
       await persistSession(res.data);
       navigation.replace('Home', {userEmail: res.data.user?.email || email});
     } catch (err) {
+      const errorCode = err?.code != null ? String(err.code) : '';
       if (err.code === statusCodes.SIGN_IN_CANCELLED) {
         setError('Google sign in was cancelled');
       } else if (err.code === statusCodes.IN_PROGRESS) {
         setError('Google sign in is already in progress');
       } else if (err.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
         setError('Google Play Services are not available');
+      } else if (errorCode === '10' || errorCode === '12500') {
+        setError(
+          `Google sign-in config error (${errorCode}). Check OAuth package/SHA setup in Google Cloud Console.`,
+        );
       } else {
-        setError(err.response?.data?.error || err.message || 'Google login failed');
+        setError(
+          err.response?.data?.error ||
+            (errorCode
+              ? `Google login failed (${errorCode}): ${err.message || 'Unknown error'}`
+              : err.message || 'Google login failed'),
+        );
       }
     } finally {
       setLoading(false);
